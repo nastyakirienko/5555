@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Простой сайт</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1 id="site-title">Добро пожаловать на мультиязычный веб-сайт!</h1>
+        <nav>
+            <select id="language-selector" onchange="changeLanguage()">
+                <option value="ru">Русский</option>
+                <option value="en">English</option>
+                <option value="kk">Қазақша</option>
+            </select>
+            <a href="#info" onclick="smoothScroll(event, 'info')">Информация</a>
+            <a href="#contacts" onclick="smoothScroll(event, 'contacts')">Контакты</a>
+            <a href="#services" onclick="smoothScroll(event, 'services')">Услуги</a>
+            <a href="https://example.com" target="_blank">Внешний ресурс</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="info">
+            <h2 id="info-title">Информация</h2>
+            <p id="info-description">Это простой веб-сайт с поддержкой мультиязычности. Мы рады помочь вам в любых вопросах!</p>
+        </section>
+
+        <section id="services">
+            <h2 id="services-title">Услуги</h2>
+            <ul id="services-list">
+                <li>Консультации</li>
+                <li>Поддержка клиентов</li>
+                <li>Разработка веб-сайтов</li>
+            </ul>
+        </section>
+
+        <section id="contacts">
+            <h2 id="contacts-title">Контакты</h2>
+            <p id="contacts-email">Обращайтесь по электронной почте: anastasiakirienko3@gmail.com</p>
+            <p id="contacts-phone">Телефон: 87059925133</p>
+        </section>
+    </main>
+
+    <footer>
+        <p id="footer-text">&copy; 2024 Простой сайт. Все права защищены.</p>
+    </footer>
+
+    <script>
+        const content = {
+            ru: {
+                title: "Добро пожаловать на мультиязычный веб-сайт!",
+                infoTitle: "Информация",
+                infoDescription: "Это простой веб-сайт с поддержкой мультиязычности. Мы рады помочь вам в любых вопросах!",
+                servicesTitle: "Услуги",
+                servicesList: ["Консультации", "Поддержка клиентов", "Разработка веб-сайтов"],
+                contactsTitle: "Контакты",
+                contactsEmail: "Обращайтесь по электронной почте: anastasiakirienko3@gmail.com",
+                contactsPhone: "Телефон: 87059925133"
+            },
+            en: {
+                title: "Welcome to the multilingual website!",
+                infoTitle: "Information",
+                infoDescription: "This is a simple website with multilingual support. We are happy to assist you with any questions!",
+                servicesTitle: "Services",
+                servicesList: ["Consultations", "Customer Support", "Website Development"],
+                contactsTitle: "Contacts",
+                contactsEmail: "Contact us by email: anastasiakirienko3@gmail.com",
+                contactsPhone: "Phone: 87059925133"
+            },
+            kk: {
+                title: "Көптілді веб-сайтына қош келдіңіз!",
+                infoTitle: "Ақпарат",
+                infoDescription: "Бұл көптілді қолдауы бар қарапайым веб-сайт. Біз сіздің кез келген сұрақтарыңызға көмектесуге қуаныштымыз!",
+                servicesTitle: "Қызметтер",
+                servicesList: ["Консультациялар", "Клиенттерді қолдау", "Веб-сайттарды әзірлеу"],
+                contactsTitle: "Байланыстар",
+                contactsEmail: "Электрондық пошта арқылы бізбен хабарласыңыз: anastasiakirienko3@gmail.com",
+                contactsPhone: "Телефон: 87059925133"
+            }
+        };
+
+        function changeLanguage() {
+            const selectedLanguage = document.getElementById("language-selector").value;
+            const langContent = content[selectedLanguage];
+
+            document.getElementById("site-title").innerText = langContent.title;
+            document.getElementById("info-title").innerText = langContent.infoTitle;
+            document.getElementById("info-description").innerText = langContent.infoDescription;
+            document.getElementById("services-title").innerText = langContent.servicesTitle;
+            document.getElementById("services-list").innerHTML = langContent.servicesList.map(item => `<li>${item}</li>`).join('');
+            document.getElementById("contacts-title").innerText = langContent.contactsTitle;
+            document.getElementById("contacts-email").innerText = langContent.contactsEmail;
+            document.getElementById("contacts-phone").innerText = langContent.contactsPhone;
+        }
+
+        function smoothScroll(event, targetId) {
+            event.preventDefault();
+            const targetElement = document.getElementById(targetId);
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
